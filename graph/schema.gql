@@ -1,0 +1,23 @@
+type Recipe {
+  id: ID!
+  title: String!
+  author: String!
+  ingredients: [String!]!
+  steps: [String!]!
+}
+
+input CreateRecipeInput {
+  title: String!
+  author: String!
+  ingredients: [String!]!
+  steps: [String!]!
+}
+
+type Query {
+  recipes: [Recipe]!
+  recipe(id: ID!): Recipe
+}
+
+type Mutation {
+  createRecipe(input: CreateRecipeInput!): Recipe!
+}

@@ -14,8 +14,8 @@ input CreateRecipeInput {
 }
 
 type Query {
-  recipes: [Recipe]!
   recipe(id: ID!): Recipe
+  recipes: [Recipe]!
 }
 
 type Mutation {

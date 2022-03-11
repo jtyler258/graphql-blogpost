@@ -12,20 +12,16 @@ import (
 )
 
 func (r *mutationResolver) CreateRecipe(ctx context.Context, input model.CreateRecipeInput) (*model.Recipe, error) {
-	recipe := &model.Recipe {
-		ID: uuid.New().String(),
-		Title: input.Title,
-		Author: input.Author,
+	recipe := &model.Recipe{
+		ID:          uuid.New().String(),
+		Title:       input.Title,
+		Author:      input.Author,
 		Ingredients: input.Ingredients,
-		Steps: input.Steps,
+		Steps:       input.Steps,
 	}
 
 	r.recipes = append(r.recipes, recipe)
 	return recipe, nil
-}
-
-func (r *queryResolver) Recipes(ctx context.Context) ([]*model.Recipe, error) {
-	return r.recipes, nil
 }
 
 func (r *queryResolver) Recipe(ctx context.Context, id string) (*model.Recipe, error) {
@@ -36,6 +32,10 @@ func (r *queryResolver) Recipe(ctx context.Context, id string) (*model.Recipe, e
 	}
 
 	return nil, nil
+}
+
+func (r *queryResolver) Recipes(ctx context.Context) ([]*model.Recipe, error) {
+	return r.recipes, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
